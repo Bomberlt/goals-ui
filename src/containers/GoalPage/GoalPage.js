@@ -10,8 +10,10 @@ class GoalsPage extends Component {
   static propTypes = {};
 
   componentDidMount = () => {
-    goalsApi.getGoals().then(response => this.setState({ ...response.data }));
-    // TODO: Handle failure
+    goalsApi
+      .getGoals()
+      .then(response => this.setState({ ...response.data }))
+      .catch(() => console.log("bad data"));
   };
 
   componentDidUpdate = () => {

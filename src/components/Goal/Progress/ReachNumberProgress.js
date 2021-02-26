@@ -1,16 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Goal from "./Goal";
+import ProgressBar from "../../ProgressBar/ProgressBar";
 
-const ReachNumberGoal = ({ name, data }) => {
+const ReachNumberProgress = ({ data }) => {
   return (
-    <Goal
-      data={data}
-      name={name}
-      barLabel={renderBarLabel(data)}
-      percentage={calculatePercentage(data)}
-    />
-  );
+    <div>
+      <ProgressBar completedPercentage={calculatePercentage(data)} />
+      <div className="has-text-centered is-size-4">{renderBarLabel(data)}</div>
+    </div>
+  )
 };
 
 const calculatePercentage = data => {
@@ -40,9 +38,8 @@ const getLastItem = entries => {
     .slice(-1)[0];
 };
 
-ReachNumberGoal.protoTypes = {
-  name: PropTypes.string.isRequired,
+ReachNumberProgress.protoTypes = {
   data: PropTypes.object.isRequired
 };
 
-export default ReachNumberGoal;
+export default ReachNumberProgress;

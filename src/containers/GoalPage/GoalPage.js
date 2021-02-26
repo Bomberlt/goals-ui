@@ -11,6 +11,7 @@ class GoalsPage extends Component {
 
   componentDidMount = () => {
     goalsApi.getGoals().then(response => this.setState({ ...response.data }));
+    // TODO: Handle failure
   };
 
   componentDidUpdate = () => {

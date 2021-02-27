@@ -52,6 +52,7 @@ const mapGoalItems = items => {
             title={item.value}
             date={item.date}
             imageUrl={item.imageUrl}
+            timestamp={item.timestamp}
           />
         </div>
       ))}

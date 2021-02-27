@@ -42,7 +42,7 @@ const chunkArray = (array, chunk_size) => {
 const transpose = a => a[0].map((_, c) => a.map(r => r[c]));
 
 const mapGoalItems = items => {
-  const chunkedItems = transpose(chunkArray(items, 3));
+  const chunkedItems = transpose(chunkArray(items.slice(), 3));
   return chunkedItems.map((row, rowIndex) => {
     return (
     <div key={rowIndex} className="column">

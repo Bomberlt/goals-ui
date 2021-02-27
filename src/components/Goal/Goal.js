@@ -12,7 +12,7 @@ const Goal = ({ name, data, type, hideItems }) => {
       <h1 className="title has-text-centered">{name}</h1>
       {renderProgress(data, type)}
       <Hideable isHidden={hideItems == null || hideItems }>
-        <div className="tile is-ancestor is-16">
+        <div className="columns">
             {mapGoalItems(data.entries)}
         </div>
       </Hideable>
@@ -30,10 +30,34 @@ const renderProgress = (data, type) => {
   }
 }
 
+const chunkArray = (array, chunk_size) => {
+  var results = [];
+
+  while (array.length) {
+    results.push(array.splice(0, chunk_size));
+  }
+
+  return results;
+}
+const transpose = a => a[0].map((_, c) => a.map(r => r[c]));
+
 const mapGoalItems = items => {
-  return items.map((item, index) => (
-    <GoalItem key={index} title={item.value} date={item.date} imageUrl={item.imageUrl} />
-  ));
+  const chunkedItems = transpose(chunkArray(items, 3));
+  return chunkedItems.map((row, rowIndex) => {
+    return (
+    <div key={rowIndex} className="column">
+      {row.map((item, index) => (
+        <div key={index} className="col">
+          <GoalItem
+            title={item.value}
+            date={item.date}
+            imageUrl={item.imageUrl}
+          />
+        </div>
+      ))}
+    </div>
+    );
+  });
 };
 
 Goal.protoTypes = {

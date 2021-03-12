@@ -46,7 +46,7 @@ const mapGoalItems = items => {
   return chunkedItems.map((row, rowIndex) => {
     return (
     <div key={rowIndex} className="column">
-      {row.map((item, index) => (
+      {row.map((item, index) => !!item && (
         <div key={index} className="col">
           <GoalItem
             title={item.value}
@@ -55,7 +55,8 @@ const mapGoalItems = items => {
             timestamp={item.timestamp}
           />
         </div>
-      ))}
+        )
+      )}
     </div>
     );
   });

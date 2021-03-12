@@ -13,7 +13,7 @@ class GoalsPage extends Component {
     goalsApi
       .getGoals()
       .then(response => this.setState({ ...response.data }))
-      .catch(() => console.log("bad data"));
+      .catch((e) => console.log(e));
   };
 
   componentDidUpdate = () => {

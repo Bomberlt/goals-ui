@@ -15,7 +15,7 @@ const GoalItem = ({title, date, imageUrl, timestamp}) => {
           </span>
           {imageUrl && (
             <figure className="image is-2by2">
-              <img referrerPolicy="no-referrer" crossOrigin="anonymous" src={'https://cors-anywhere.herokuapp.com/' + imageUrl}/>
+              <img referrerPolicy="no-referrer" crossOrigin="anonymous" src={'https://whispering-savannah-53019.herokuapp.com/' + imageUrl}/>
             </figure>
           )}
         </p>
